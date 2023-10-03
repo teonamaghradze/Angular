@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 
 import { Users } from '../users.interface';
+import { UserDataService } from 'src/app/services/user-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -24,7 +26,11 @@ export class FormsComponent {
   selectedUser: Users | null = null;
   // userToRemove: any = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userDataService: UserDataService,
+    private router: Router
+  ) {
     this.registrationForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -69,9 +75,9 @@ export class FormsComponent {
       : null;
   }
 
-  onSubmit() {
-    console.log(this.registrationForm.errors, 'sdasdsa');
-    console.log(this.registrationForm.get('confirmPassword'));
+  onSubmit(formData: any) {
+    // console.log(this.registrationForm.errors, 'sdasdsa');
+    // console.log(this.registrationForm.get('confirmPassword'));
 
     if (
       this.registrationForm.errors &&
@@ -85,10 +91,13 @@ export class FormsComponent {
 
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      console.log('Form Data:', formData);
+      // console.log('Form Data:', formData);
       this.userData.push(formData);
       this.registrationForm.reset();
-      console.log(this.userData);
+      // console.log(this.userData);
+
+      this.userDataService.setUserData(formData);
+      this.router.navigate(['/login']);
     }
   }
 

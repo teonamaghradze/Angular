@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CurrencyConventerComponent } from './currency-conventer/currency-conventer.component';
+import { CurrencyConventerComponent } from './components/currency-conventer/currency-conventer.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormsComponent } from '../app/user-forms/forms/forms.component';
-import { UsersListComponent } from '../app/user-forms/users-list/users-list.component';
-import { LoginComponent } from './login/login.component';
+import { FormsComponent } from './components/user-forms/forms/forms.component';
+import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
