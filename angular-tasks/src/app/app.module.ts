@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { FormsComponent } from '../app/user-forms/forms/forms.component';
 import { UsersListComponent } from '../app/user-forms/users-list/users-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UsersListComponent } from '../app/user-forms/users-list/users-list.comp
     FormsComponent,
     UsersListComponent,
     CurrencyConventerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
