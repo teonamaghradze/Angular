@@ -9,7 +9,10 @@ export class UserDataService {
   constructor() {}
 
   setUserData(data: any) {
-    this.usersData = data;
+    // this.usersData = data;
+    // console.log(data.email);
+
+    this.usersData.push(data);
     console.log(data);
   }
 
@@ -17,6 +20,7 @@ export class UserDataService {
     return this.usersData;
   }
   getUserByEmail(email: string) {
+    // const userEmail = this.usersData.find((user) => user.email === email);
     return this.usersData.find((user) => user.email === email);
   }
 }

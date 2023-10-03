@@ -17,10 +17,11 @@ export class LoginComponent {
   ) {}
 
   login() {
-    const user = this.userDataService.getUserByEmail(this.email);
+    const user: any = this.userDataService.getUserByEmail(this.email);
 
     if (user && user.password === this.password) {
-      this.router.navigate(['/next-route']);
+      // this.router.navigate(['/next-route']);
+      console.log('dadasdda');
     } else {
       alert('Invalid email or password');
     }

@@ -91,10 +91,8 @@ export class FormsComponent {
 
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      // console.log('Form Data:', formData);
       this.userData.push(formData);
       this.registrationForm.reset();
-      // console.log(this.userData);
 
       this.userDataService.setUserData(formData);
       this.router.navigate(['/login']);
