@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Users } from '../users.interface';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-users-list',
@@ -14,6 +15,11 @@ export class UsersListComponent {
   userToRemove: Users | null = null;
 
   @Input() userData: Users[] = [];
+
+  constructor(private userDataService: UserDataService) {
+    console.log(this.userData);
+    this.userData = this.userDataService.getUsersData();
+  }
 
   //edit User
   editUser(user: Users) {

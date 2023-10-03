@@ -93,6 +93,7 @@ export class FormsComponent {
       const formData = this.registrationForm.value;
       this.userData.push(formData);
       this.registrationForm.reset();
+      console.log(this.userData);
 
       this.userDataService.setUserData(formData);
       this.router.navigate(['/login']);
