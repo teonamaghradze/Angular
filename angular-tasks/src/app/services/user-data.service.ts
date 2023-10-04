@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class UserDataService {
   private usersData: any[] = [];
   public isLoggedIn: boolean = false; //es guardistvis
+  public currentUser: any = '';
 
   constructor() {}
 
@@ -22,6 +23,7 @@ export class UserDataService {
 
     if (userEmail) {
       this.isLoggedIn = true; // guardistvis
+      this.currentUser = email;
     }
 
     return userEmail;
@@ -30,5 +32,9 @@ export class UserDataService {
   //esec guardistvis
   getIsLoggedIn() {
     return this.isLoggedIn;
+  }
+
+  logOut() {
+    this.isLoggedIn = false;
   }
 }

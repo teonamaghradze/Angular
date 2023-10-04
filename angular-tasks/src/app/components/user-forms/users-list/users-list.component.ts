@@ -14,11 +14,15 @@ export class UsersListComponent {
 
   userToRemove: Users | null = null;
 
+  currentUser: any = '';
+
   @Input() userData: Users[] = [];
 
   constructor(private userDataService: UserDataService) {
     console.log(this.userData);
     this.userData = this.userDataService.getUsersData();
+
+    this.currentUser = this.userDataService.currentUser;
   }
 
   //edit User

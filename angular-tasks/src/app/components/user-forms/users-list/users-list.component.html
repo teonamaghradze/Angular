@@ -16,8 +16,12 @@
       <td>{{ user.nickname }}</td>
       <td>{{ user.phoneNumber }}</td>
       <td>{{ user.website }}</td>
-      <button (click)="editUser(user)">Edit</button>
-      <button (click)="removeUser(user)">Remove</button>
+
+      <ng-container *ngIf="user.email === currentUser">
+        <button (click)="editUser(user)">Edit</button>
+        <button (click)="removeUser(user)">Remove</button>
+      </ng-container>
+
       <ng-container *ngIf="userToRemove?.email === user.email">
         <button (click)="confirmRemoveUser()">Yes</button>
         <button (click)="cancelRemoveUser()">No</button>
