@@ -5,13 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class UserDataService {
   private usersData: any[] = [];
+  private isLoggedIn: boolean = false; //es guardistvis
 
   constructor() {}
 
   setUserData(data: any) {
-    // this.usersData = data;
-    // console.log(data.email);
-
     this.usersData.push(data);
     console.log(data);
   }
@@ -20,7 +18,13 @@ export class UserDataService {
     return this.usersData;
   }
   getUserByEmail(email: string) {
-    // const userEmail = this.usersData.find((user) => user.email === email);
-    return this.usersData.find((user) => user.email === email);
+    const userEmail = this.usersData.find((user) => user.email === email);
+    this.isLoggedIn = true; // guardistvis
+    return userEmail;
+  }
+
+  //esec guardistvis
+  getIsLoggedIn() {
+    return this.isLoggedIn;
   }
 }

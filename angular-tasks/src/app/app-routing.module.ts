@@ -4,10 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: FormsComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [authGuard] },
   { path: 'users', component: UsersListComponent },
 ];
 

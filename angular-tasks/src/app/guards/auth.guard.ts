@@ -1,6 +1,13 @@
 import { CanActivateFn } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { UserDataService } from '../services/user-data.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  return true;
+  const service = inject(UserDataService);
+
+  if (service.getIsLoggedIn()) {
+    return false;
+  } else {
+    return true;
+  }
 };
