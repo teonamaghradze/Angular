@@ -2,11 +2,11 @@ import { CanActivateFn, Router } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
 import { UserDataService } from '../services/user-data.service';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const loginGuard: CanActivateFn = (route, state) => {
   const service = inject(UserDataService);
   const router = inject(Router);
 
-  if (service.getIsLoggedIn()) {
+  if (!service.getIsLoggedIn()) {
     return true;
   } else {
     return false;

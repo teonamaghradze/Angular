@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserDataService {
   private usersData: any[] = [];
-  private isLoggedIn: boolean = false; //es guardistvis
+  public isLoggedIn: boolean = false; //es guardistvis
 
   constructor() {}
 
@@ -19,7 +19,11 @@ export class UserDataService {
   }
   getUserByEmail(email: string) {
     const userEmail = this.usersData.find((user) => user.email === email);
-    this.isLoggedIn = true; // guardistvis
+
+    if (userEmail) {
+      this.isLoggedIn = true; // guardistvis
+    }
+
     return userEmail;
   }
 
