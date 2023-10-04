@@ -96,7 +96,7 @@ export class FormsComponent {
       console.log(this.userData);
 
       this.userDataService.setUserData(formData);
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
     }
   }
 

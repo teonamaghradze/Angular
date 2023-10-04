@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
     UsersListComponent,
     CurrencyConventerComponent,
     LoginComponent,
+    TopBarComponent,
   ],
   imports: [
     BrowserModule,
