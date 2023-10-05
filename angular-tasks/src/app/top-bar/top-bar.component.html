@@ -1,6 +1,8 @@
 <div class="topbar">
-  <a routerLink="/currency">Currency page</a>
-  <a routerLink="/login">Log in</a>
-  <a routerLink="/users">Users</a>
-  <a (click)="logOut()" routerLink="/login">Log out</a>
+  <a routerLink="/currency" class="topbar-link">Currency Page</a>
+  <a routerLink="/login" class="topbar-link">Log In</a>
+  <a routerLink="/users" class="topbar-link">Users</a>
+  <a (click)="logOut()" routerLink="/login" class="topbar-link logout-link"
+    >Log Out</a
+  >
 </div>
