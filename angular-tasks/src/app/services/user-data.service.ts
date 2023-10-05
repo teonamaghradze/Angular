@@ -1,28 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, Subscriber } from 'rxjs';
+import { Users } from '../components/user-forms/users.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDataService {
-  private usersData: any[] = [];
+  private usersData: Users[] = [];
   public isLoggedIn: boolean = false; //es guardistvis
-  public currentUser: any = '';
+  public currentUser: string = '';
 
-  setUserData(data: any) {
+  setUserData(data: Users) {
     this.usersData.push(data);
     console.log(data);
   }
 
-  editUserData(index: number, data: any) {
+  editUserData(index: number, data: Users) {
     console.log(data, 'data');
     console.log(index, 'i');
     console.log(this.usersData);
 
-    // const index = this.usersData.findIndex(
-    //   (user: any) => user.email === data.email
-    // );
-    // console.log(index, 'index');
     this.currentUser = this.usersData[index].email;
 
     this.usersData[index] = data;

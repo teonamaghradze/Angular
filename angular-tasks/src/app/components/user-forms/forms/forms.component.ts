@@ -85,7 +85,7 @@ export class FormsComponent implements OnChanges {
       : null;
   }
 
-  onSubmit(formData: any) {
+  onSubmit() {
     if (
       this.registrationForm.errors &&
       this.registrationForm.errors['passwordMismatch']
@@ -128,8 +128,6 @@ export class FormsComponent implements OnChanges {
         (user) => user.email === this.selectedUser?.email
       );
 
-      console.log(index, 'index 2');
-
       if (index !== -1) {
         this.userData[index] = editedUserData;
 
@@ -143,8 +141,6 @@ export class FormsComponent implements OnChanges {
 
   // //cancel edit
   cancelEdit() {
-    console.log('edit', this.selectedUser);
-
     this.selectedUser = null;
     this.registrationForm.reset();
   }

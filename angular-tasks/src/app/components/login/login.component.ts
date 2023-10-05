@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Router } from '@angular/router';
+import { Users } from '../user-forms/users.interface';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,12 @@ export class LoginComponent {
   ) {}
 
   login() {
-    const user: any = this.userDataService.getUserByEmail(this.email);
+    const user: Users | undefined = this.userDataService.getUserByEmail(
+      this.email
+    );
 
     if (user && user.password === this.password) {
       this.router.navigate(['/users']);
-      console.log('dadasdda');
     } else {
       alert('Invalid email or password');
     }

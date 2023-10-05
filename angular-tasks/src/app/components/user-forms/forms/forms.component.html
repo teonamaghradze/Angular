@@ -1,8 +1,5 @@
 <div class="container">
-  <form
-    [formGroup]="registrationForm"
-    (ngSubmit)="onSubmit(registrationForm.value)"
-  >
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="flex">
       <label for="email"> Email:</label>
       <input type="text" id="email" formControlName="email" />

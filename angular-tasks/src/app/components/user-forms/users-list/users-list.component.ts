@@ -10,11 +10,11 @@ import { UserDataService } from 'src/app/services/user-data.service';
 export class UsersListComponent {
   @Output() selectedUser = new EventEmitter<Users>();
 
-  editingUser: boolean | any = false;
+  editingUser: Users | null = null;
 
   userToRemove: Users | null = null;
 
-  currentUser: any = '';
+  currentUser = '';
 
   // @Input() userData: Users[] = [];
   userData: Users[] = [];
@@ -26,6 +26,8 @@ export class UsersListComponent {
   //edit User
   editUser(user: Users) {
     this.editingUser = user;
+    console.log(this.editingUser);
+
     this.selectedUser.emit(user);
   }
 
