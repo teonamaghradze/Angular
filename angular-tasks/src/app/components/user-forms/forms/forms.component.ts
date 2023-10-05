@@ -24,7 +24,6 @@ export class FormsComponent implements OnChanges {
   passwordMatched: boolean = true;
 
   @Input() selectedUser: Users | null = null;
-  // userToRemove: any = null;
 
   constructor(
     private fb: FormBuilder,
@@ -87,9 +86,6 @@ export class FormsComponent implements OnChanges {
   }
 
   onSubmit(formData: any) {
-    // console.log(this.registrationForm.errors, 'sdasdsa');
-    // console.log(this.registrationForm.get('confirmPassword'));
-
     if (
       this.registrationForm.errors &&
       this.registrationForm.errors['passwordMismatch']
@@ -104,7 +100,6 @@ export class FormsComponent implements OnChanges {
       const formData = this.registrationForm.value;
       // this.userData.push(formData);
       this.registrationForm.reset();
-      console.log(this.userData);
 
       this.userDataService.setUserData(formData);
       // this.router.navigate(['/login']);
