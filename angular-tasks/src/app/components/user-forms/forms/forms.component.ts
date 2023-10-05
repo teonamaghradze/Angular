@@ -103,6 +103,7 @@ export class FormsComponent implements OnChanges {
 
       this.userDataService.setUserData(formData);
       // this.router.navigate(['/login']);
+      alert('you are registered');
     }
   }
 
