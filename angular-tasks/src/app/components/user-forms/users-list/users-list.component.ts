@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Users } from '../users.interface';
 import { UserDataService } from 'src/app/services/user-data.service';
 
@@ -10,30 +17,35 @@ import { UserDataService } from 'src/app/services/user-data.service';
 export class UsersListComponent {
   @Output() selectedUser = new EventEmitter<Users>();
 
-  editingUser: boolean = false;
+  editingUser: boolean | any = false;
 
   userToRemove: Users | null = null;
 
   currentUser: any = '';
 
-  @Input() userData: Users[] = [];
+  // @Input() userData: Users[] = [];
+  userData: Users[] = [];
 
   constructor(private userDataService: UserDataService) {
     console.log(this.userData);
     this.userData = this.userDataService.getUsersData();
-
-    this.currentUser = this.userDataService.currentUser;
   }
 
   //edit User
   editUser(user: Users) {
-    this.editingUser = true;
+    console.log(user, 'user');
+
+    this.editingUser = user;
     this.selectedUser.emit(user);
   }
 
   //removeuser
   removeUser(user: Users) {
     this.userToRemove = user;
+  }
+
+  getCurrentUser() {
+    return this.userDataService.currentUser;
   }
 
   // Function to confirm and remove the user

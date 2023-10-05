@@ -17,7 +17,7 @@
       <td>{{ user.phoneNumber }}</td>
       <td>{{ user.website }}</td>
 
-      <ng-container *ngIf="user.email === currentUser">
+      <ng-container *ngIf="user.email === getCurrentUser()">
         <button (click)="editUser(user)">Edit</button>
         <button (click)="removeUser(user)">Remove</button>
       </ng-container>
@@ -29,3 +29,4 @@
     </tr>
   </tbody>
 </table>
+<app-forms *ngIf="editingUser" [selectedUser]="editingUser"></app-forms>

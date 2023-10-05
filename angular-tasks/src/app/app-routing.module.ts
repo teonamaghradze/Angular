@@ -9,7 +9,7 @@ import { loginGuard } from './guards/login.guard';
 import { CurrencyConventerComponent } from './components/currency-conventer/currency-conventer.component';
 
 const routes: Routes = [
-  { path: '', component: FormsComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'users', component: UsersListComponent, canActivate: [authGuard] },
   {

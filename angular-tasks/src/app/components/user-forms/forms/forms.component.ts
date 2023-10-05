@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,14 +16,14 @@ import { Router } from '@angular/router';
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss'],
 })
-export class FormsComponent {
+export class FormsComponent implements OnChanges {
   registrationForm: FormGroup;
   //empty array to push registered users
   userData: Users[] = [];
 
   passwordMatched: boolean = true;
 
-  selectedUser: Users | null = null;
+  @Input() selectedUser: Users | null = null;
   // userToRemove: any = null;
 
   constructor(
@@ -31,6 +31,9 @@ export class FormsComponent {
     private userDataService: UserDataService,
     private router: Router
   ) {
+    console.log(this.selectedUser, 'seslds');
+    this.userData = this.userDataService.getUsersData();
+
     this.registrationForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -63,6 +66,14 @@ export class FormsComponent {
       { validators: this.isPasswordMatched }
     );
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedUser']) {
+      console.log(this.selectedUser, changes['selectedUser'].currentValue);
+
+      this.selectedUser = changes['selectedUser'].currentValue;
+      if (this.selectedUser) this.editUser(this.selectedUser);
+    }
+  }
 
   isPasswordMatched(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
@@ -91,7 +102,7 @@ export class FormsComponent {
 
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      this.userData.push(formData);
+      // this.userData.push(formData);
       this.registrationForm.reset();
       console.log(this.userData);
 
@@ -102,7 +113,7 @@ export class FormsComponent {
 
   //edit User
   editUser(user: Users) {
-    console.log(user);
+    console.log(user, 'dsad');
 
     //copy of user
     this.selectedUser = { ...user };
@@ -114,14 +125,21 @@ export class FormsComponent {
   // // Function to save the edited user
   saveUser() {
     console.log(this.selectedUser, 'save');
+    console.log(this.userData, 'user data 111');
 
     if (this.registrationForm.valid) {
       const editedUserData = this.registrationForm.value;
       const index = this.userData.findIndex(
         (user) => user.email === this.selectedUser?.email
       );
+
+      console.log(index, 'index 2');
+
       if (index !== -1) {
         this.userData[index] = editedUserData;
+
+        this.userDataService.editUserData(index, editedUserData);
+
         this.selectedUser = null;
         this.registrationForm.reset();
       }
