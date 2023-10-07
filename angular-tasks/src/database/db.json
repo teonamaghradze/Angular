@@ -1,22 +1,10 @@
 {
   "employees": [
     {
-      "name": "reo",
+      "name": "ddsds",
       "salary": 12,
       "age": 12,
       "id": 1
-    },
-    {
-      "name": "dad",
-      "salary": null,
-      "age": null,
-      "id": 2
-    },
-    {
-      "name": "dasd",
-      "salary": 12,
-      "age": 12,
-      "id": 3
     }
   ]
 }

@@ -14,4 +14,8 @@ export class EmployeeService {
     const data = this.http.post(this.apiUrl, employeeData);
     return data;
   }
+
+  getEmployees(): Observable<any> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }

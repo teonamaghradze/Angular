@@ -16,6 +16,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { EmployeesComponent } from './employees/employees.component';
 
 import { EmployeeService } from './services/employee.service';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { EmployeeService } from './services/employee.service';
     LoginComponent,
     TopBarComponent,
     EmployeesComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,
