@@ -98,12 +98,10 @@ export class FormsComponent implements OnChanges {
 
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      // this.userData.push(formData);
       this.registrationForm.reset();
 
       this.userDataService.setUserData(formData);
-      // this.router.navigate(['/login']);
-      alert('you are registered');
+      alert('You are registered');
     }
   }
 

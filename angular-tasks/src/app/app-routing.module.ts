@@ -7,6 +7,7 @@ import { UsersListComponent } from './components/user-forms/users-list/users-lis
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
 import { CurrencyConventerComponent } from './components/currency-conventer/currency-conventer.component';
+import { EmployeesComponent } from './employees/employees.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     component: CurrencyConventerComponent,
     canActivate: [authGuard],
   },
+  { path: 'employees', component: EmployeesComponent },
 ];
 
 @NgModule({

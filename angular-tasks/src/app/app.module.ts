@@ -13,6 +13,9 @@ import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { EmployeesComponent } from './employees/employees.component';
+
+import { EmployeeService } from './services/employee.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     CurrencyConventerComponent,
     LoginComponent,
     TopBarComponent,
+    EmployeesComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
