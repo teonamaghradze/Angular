@@ -13,6 +13,9 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.getEmployees();
+    this.employeeService.dataUpdated.subscribe(() => {
+      this.getEmployees();
+    });
   }
 
   getEmployees() {
