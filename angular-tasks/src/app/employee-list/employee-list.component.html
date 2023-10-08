@@ -13,6 +13,9 @@
       <td>{{ employee.name }}</td>
       <td>{{ employee.salary }}</td>
       <td>{{ employee.age }}</td>
+      <td>
+        <button [routerLink]="'/employees/' + employee.id">Details</button>
+      </td>
     </tr>
   </tbody>
 </table>

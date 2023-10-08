@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
-import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
 import { CurrencyConventerComponent } from './components/currency-conventer/currency-conventer.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,6 +19,7 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'employees', component: EmployeesComponent },
+  { path: 'employees/:id', component: EmployeeDetailsComponent },
 ];
 
 @NgModule({
