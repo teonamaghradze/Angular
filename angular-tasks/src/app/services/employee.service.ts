@@ -20,14 +20,18 @@ export class EmployeeService {
     );
   }
 
-  getEmployees(): Observable<any> {
-    return this.http.get<any[]>(this.apiUrl);
+  //pagination
+  getEmployees(page: number, pageSize: number): Observable<any[]> {
+    const url = `${this.apiUrl}?_page=${page}&_limit=${pageSize}`;
+    return this.http.get<any[]>(url);
   }
 
+  //to get details of employee
   getEmployeeId(id: number) {
     return this.http.get<any[]>(`${this.apiUrl}/${id}`);
   }
 
+  //delete functionality
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(
       tap(() => {

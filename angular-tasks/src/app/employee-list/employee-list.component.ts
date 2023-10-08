@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -9,24 +11,51 @@ import { EmployeeService } from '../services/employee.service';
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
 
-  constructor(private employeeService: EmployeeService) {}
+  currentPage: number = 1;
+  pageSize: number = 2;
+  totalPages: any;
+
+  constructor(
+    private employeeService: EmployeeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.getEmployees();
+    this.route.queryParams.subscribe((params) => {
+      this.currentPage = parseInt(params['page']) || 1;
+      this.getEmployees();
+    });
+
     this.employeeService.dataUpdated.subscribe(() => {
       this.getEmployees();
     });
   }
 
   getEmployees() {
-    this.employeeService.getEmployees().subscribe(
-      (data) => {
-        this.employees = data;
-      },
-      (error) => {
-        console.error('Error fetching employees', error);
-      }
-    );
+    this.employeeService
+      .getEmployees(this.currentPage, this.pageSize)
+      .subscribe(
+        (data) => {
+          this.employees = data;
+          this.totalPages = Math.ceil(data.length / this.pageSize);
+        },
+        (error) => {
+          console.error('Error fetching employees', error);
+        }
+      );
+  }
+
+  changePage(newPage: number) {
+    if (newPage >= 1) {
+      this.currentPage = newPage;
+
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { page: newPage },
+        queryParamsHandling: 'merge',
+      });
+    }
   }
 
   deleteEmployee(id: number) {
