@@ -9,6 +9,7 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmployeeDetailsComponent implements OnInit {
   employee: any;
+
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute

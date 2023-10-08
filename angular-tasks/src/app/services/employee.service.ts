@@ -12,10 +12,6 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  // addEmployee(employeeData: any): Observable<any> {
-  //   const data = this.http.post(this.apiUrl, employeeData);
-  //   return data;
-  // }
   addEmployee(employeeData: any): Observable<any> {
     return this.http.post(this.apiUrl, employeeData).pipe(
       tap(() => {
@@ -30,5 +26,13 @@ export class EmployeeService {
 
   getEmployeeId(id: number) {
     return this.http.get<any[]>(`${this.apiUrl}/${id}`);
+  }
+
+  deleteEmployee(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(
+      tap(() => {
+        this.dataUpdated.emit();
+      })
+    );
   }
 }

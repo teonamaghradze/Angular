@@ -27,6 +27,7 @@ export class EmployeesComponent {
       this.employeeService.addEmployee(employeeData).subscribe(
         (response) => {
           console.log('Employee added successfully', response);
+          this.registrationForm.reset();
         },
         (error) => {
           console.error('Error adding employee', error);
