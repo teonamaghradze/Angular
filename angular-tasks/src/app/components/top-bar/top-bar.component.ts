@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserDataService } from '../services/user-data.service';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-top-bar',

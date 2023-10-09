@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { EmployeesComponent } from './employees/employees.component';
 
 import { EmployeeService } from './services/employee.service';
