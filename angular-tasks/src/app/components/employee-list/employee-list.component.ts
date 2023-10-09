@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
+import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -27,8 +27,11 @@ export class EmployeeListComponent implements OnInit {
       this.getEmployees();
     });
 
-    this.employeeService.getAllEmployees().subscribe((employees: any) => {
-      this.totalPages = Math.ceil(employees.length / this.pageSize);
+    // this.employeeService.getAllEmployees().subscribe((employees: any) => {
+    //   this.totalPages = Math.ceil(employees.length / this.pageSize);
+    // });
+    this.employeeService.employeesCount.subscribe((employees: any) => {
+      this.totalPages = Math.ceil(employees / this.pageSize);
     });
 
     this.employeeService.dataUpdated.subscribe(() => {
@@ -42,12 +45,6 @@ export class EmployeeListComponent implements OnInit {
       .subscribe(
         (data) => {
           this.employees = data;
-          // console.log('/dsadsadsa');
-
-          // console.log(data.length, data);
-          // console.log(this.pageSize);
-
-          // this.totalPages = Math.ceil(data.length / this.pageSize);
         },
         (error) => {
           console.error('Error fetching employees', error);

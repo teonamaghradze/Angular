@@ -13,12 +13,12 @@ import { FormsComponent } from './components/user-forms/forms/forms.component';
 import { UsersListComponent } from './components/user-forms/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 import { EmployeeService } from './services/employee.service';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
