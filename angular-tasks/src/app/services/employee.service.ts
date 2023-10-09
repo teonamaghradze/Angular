@@ -12,6 +12,10 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
+  getAllEmployees() {
+    return this.http.get(this.apiUrl);
+  }
+
   addEmployee(employeeData: any): Observable<any> {
     return this.http.post(this.apiUrl, employeeData).pipe(
       tap(() => {

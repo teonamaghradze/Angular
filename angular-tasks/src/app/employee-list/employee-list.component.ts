@@ -27,6 +27,10 @@ export class EmployeeListComponent implements OnInit {
       this.getEmployees();
     });
 
+    this.employeeService.getAllEmployees().subscribe((employees: any) => {
+      this.totalPages = Math.ceil(employees.length / this.pageSize);
+    });
+
     this.employeeService.dataUpdated.subscribe(() => {
       this.getEmployees();
     });
@@ -38,7 +42,12 @@ export class EmployeeListComponent implements OnInit {
       .subscribe(
         (data) => {
           this.employees = data;
-          this.totalPages = Math.ceil(data.length / this.pageSize);
+          // console.log('/dsadsadsa');
+
+          // console.log(data.length, data);
+          // console.log(this.pageSize);
+
+          // this.totalPages = Math.ceil(data.length / this.pageSize);
         },
         (error) => {
           console.error('Error fetching employees', error);
@@ -56,6 +65,9 @@ export class EmployeeListComponent implements OnInit {
         queryParamsHandling: 'merge',
       });
     }
+    console.log(
+      `currentPage: ${this.currentPage}, totalPages: ${this.totalPages}`
+    );
   }
 
   deleteEmployee(id: number) {
