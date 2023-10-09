@@ -31,6 +31,11 @@ export class EmployeeService {
     return this.http.get<any[]>(`${this.apiUrl}/${id}`);
   }
 
+  //update data
+  updateEmployeeData(id: number, data: any) {
+    return this.http.put<any[]>(`${this.apiUrl}/${id}`, data);
+  }
+
   //delete functionality
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(

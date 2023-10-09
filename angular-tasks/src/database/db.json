@@ -1,52 +1,22 @@
 {
   "employees": [
     {
-      "name": "dad",
-      "salary": 12,
+      "name": "teo",
+      "salary": 500,
       "age": 12,
       "id": 1
     },
     {
-      "name": "dadas",
-      "salary": 12,
-      "age": 12,
+      "name": "Teona Maghradze",
+      "salary": 12000000,
+      "age": 29,
       "id": 2
     },
     {
-      "name": "asddad",
+      "name": "teonaa",
       "salary": 12,
       "age": 12,
       "id": 3
-    },
-    {
-      "name": "sdad",
-      "salary": 12,
-      "age": 12,
-      "id": 4
-    },
-    {
-      "name": "teon",
-      "salary": 12,
-      "age": 12,
-      "id": 5
-    },
-    {
-      "name": "das",
-      "salary": 12,
-      "age": 12,
-      "id": 6
-    },
-    {
-      "name": "dad",
-      "salary": 12,
-      "age": 12,
-      "id": 7
-    },
-    {
-      "name": "aad",
-      "salary": 12,
-      "age": 12,
-      "id": 8
     }
   ]
 }

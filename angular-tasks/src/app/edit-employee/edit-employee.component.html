@@ -1,0 +1,34 @@
+<form [formGroup]="editEmployee" id="employeeForm" (ngSubmit)="updateData()">
+  <h3>Edit Employee</h3>
+  <label for="name">Name:</label>
+  <input
+    formControlName="name"
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Enter name"
+  />
+
+  <label for="salary">Salary:</label>
+  <input
+    formControlName="salary"
+    type="number"
+    id="salary"
+    name="salary"
+    placeholder="Enter salary"
+  />
+
+  <label for="age">Age:</label>
+  <input
+    formControlName="age"
+    type="number"
+    id="age"
+    name="age"
+    placeholder="Enter age"
+  />
+
+  <div class="buttons">
+    <button id="go-back-btn" routerLink="/employees">Go back</button>
+    <button type="submit">Save</button>
+  </div>
+</form>

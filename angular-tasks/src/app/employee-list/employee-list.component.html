@@ -18,6 +18,10 @@
       </td>
 
       <td>
+        <button [routerLink]="'/edit/' + employee.id">Edit</button>
+      </td>
+
+      <td>
         <button (click)="deleteEmployee(employee.id)">Delete</button>
       </td>
     </tr>

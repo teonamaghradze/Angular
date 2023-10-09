@@ -8,6 +8,7 @@ import { loginGuard } from './guards/login.guard';
 import { CurrencyConventerComponent } from './components/currency-conventer/currency-conventer.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'employees', component: EmployeesComponent },
   { path: 'employees/:id', component: EmployeeDetailsComponent },
+  { path: 'edit/:id', component: EditEmployeeComponent },
 ];
 
 @NgModule({
