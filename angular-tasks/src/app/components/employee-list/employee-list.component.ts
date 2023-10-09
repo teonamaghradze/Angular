@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Employees } from '../employees.interface';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,7 +13,7 @@ export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
 
   currentPage: number = 1;
-  pageSize: number = 2;
+  pageSize: number = 5;
   totalPages: any;
 
   constructor(
@@ -27,9 +28,6 @@ export class EmployeeListComponent implements OnInit {
       this.getEmployees();
     });
 
-    // this.employeeService.getAllEmployees().subscribe((employees: any) => {
-    //   this.totalPages = Math.ceil(employees.length / this.pageSize);
-    // });
     this.employeeService.employeesCount.subscribe((employees: any) => {
       this.totalPages = Math.ceil(employees / this.pageSize);
     });
@@ -62,9 +60,6 @@ export class EmployeeListComponent implements OnInit {
         queryParamsHandling: 'merge',
       });
     }
-    console.log(
-      `currentPage: ${this.currentPage}, totalPages: ${this.totalPages}`
-    );
   }
 
   deleteEmployee(id: number) {

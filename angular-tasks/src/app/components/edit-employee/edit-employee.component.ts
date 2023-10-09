@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute } from '@angular/router';
+import { Employees } from '../employees.interface';
 
 @Component({
   selector: 'app-edit-employee',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-employee.component.scss'],
 })
 export class EditEmployeeComponent implements OnInit {
-  editEmployee: FormGroup; // Declare the registrationForm property
+  editEmployee: FormGroup;
 
   constructor(
     private employeeService: EmployeeService,
@@ -24,11 +25,9 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.router.snapshot.params['id']);
     this.employeeService
       .getEmployeeId(this.router.snapshot.params['id'])
-      .subscribe((data: any) => {
-        // console.log(data);
+      .subscribe((data: Employees) => {
         this.editEmployee = this.fb.group({
           name: [data['name'], Validators.required],
           salary: [data['salary'], Validators.required],

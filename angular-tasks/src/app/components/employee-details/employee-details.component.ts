@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
+import { Employees } from '../employees.interface';
 
 @Component({
   selector: 'app-employee-details',
@@ -8,7 +9,7 @@ import { EmployeeService } from '../../services/employee.service';
   styleUrls: ['./employee-details.component.scss'],
 })
 export class EmployeeDetailsComponent implements OnInit {
-  employee: any;
+  employee: Employees | null = null;
 
   constructor(
     private employeeService: EmployeeService,

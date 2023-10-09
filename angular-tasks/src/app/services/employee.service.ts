@@ -42,7 +42,7 @@ export class EmployeeService {
 
   //to get details of employee
   getEmployeeId(id: number) {
-    return this.http.get<Employees[]>(`${this.apiUrl}/${id}`);
+    return this.http.get<Employees>(`${this.apiUrl}/${id}`);
   }
 
   //update data
