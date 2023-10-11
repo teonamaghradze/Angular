@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Employees } from '../employees.interface';
 
 @Component({
-  selector: 'app-edit-employee',
-  templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.scss'],
+    selector: 'app-edit-employee',
+    templateUrl: './edit-employee.component.html',
+    styleUrls: ['./edit-employee.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        RouterLink,
+    ],
 })
 export class EditEmployeeComponent implements OnInit {
   editEmployee: FormGroup;

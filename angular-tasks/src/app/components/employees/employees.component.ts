@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss'],
+    selector: 'app-employees',
+    templateUrl: './employees.component.html',
+    styleUrls: ['./employees.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        EmployeeListComponent,
+    ],
 })
 export class EmployeesComponent {
   registrationForm: FormGroup;

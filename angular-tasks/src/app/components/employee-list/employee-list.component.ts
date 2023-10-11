@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { Employees } from '../employees.interface';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss'],
+    selector: 'app-employee-list',
+    templateUrl: './employee-list.component.html',
+    styleUrls: ['./employee-list.component.scss'],
+    standalone: true,
+    imports: [NgFor, RouterLink],
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];

@@ -1,20 +1,21 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Users } from '../users.interface';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-forms',
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.scss'],
+    selector: 'app-forms',
+    templateUrl: './forms.component.html',
+    styleUrls: ['./forms.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+    ],
 })
 export class FormsComponent implements OnChanges {
   registrationForm: FormGroup;

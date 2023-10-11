@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface ExchangeRateData {
   conversion_rate: { [currency: string]: number };
 }
 
 @Component({
-  selector: 'app-currency-conventer',
-  templateUrl: './currency-conventer.component.html',
-  styleUrls: ['./currency-conventer.component.scss'],
+    selector: 'app-currency-conventer',
+    templateUrl: './currency-conventer.component.html',
+    styleUrls: ['./currency-conventer.component.scss'],
+    standalone: true,
+    imports: [FormsModule, NgFor],
 })
 export class CurrencyConventerComponent {
   baseUrl = `https://v6.exchangerate-api.com/v6/af3b6d4b4e1dfe63e5042906`;

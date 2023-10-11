@@ -1,11 +1,19 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Users } from '../users.interface';
 import { UserDataService } from 'src/app/services/user-data.service';
+import { FormsComponent } from '../forms/forms.component';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss'],
+    selector: 'app-users-list',
+    templateUrl: './users-list.component.html',
+    styleUrls: ['./users-list.component.scss'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NgIf,
+        FormsComponent,
+    ],
 })
 export class UsersListComponent {
   @Output() selectedUser = new EventEmitter<Users>();
