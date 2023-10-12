@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { UserDataService } from '../../../services/user-data.service';
+import { Component } from '@angular/core';
+import { UserDataService } from '../../../../Shared/services/user-data.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,7 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./top-bar.component.scss'],
   standalone: true,
   imports: [RouterLink],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopBarComponent {
   constructor(private userDataService: UserDataService) {}

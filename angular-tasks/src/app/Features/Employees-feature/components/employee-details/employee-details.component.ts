@@ -5,8 +5,8 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeeService } from '../../../../services/employee.service';
-import { Employees } from '../../employees.interface';
+import { EmployeeService } from '../../services/employee.service';
+import { Employees } from '../../interfaces/employees.interface';
 import { NgIf } from '@angular/common';
 
 @Component({

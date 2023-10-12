@@ -17,7 +17,7 @@ import {
 } from '@angular/forms';
 
 import { Users } from '../../../../Shared/interfaces/users.interface';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { UserDataService } from 'src/app/Shared/services/user-data.service';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 

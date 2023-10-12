@@ -4,10 +4,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
-import { EmployeeService } from '../../../../services/employee.service';
+import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { Employees } from '../../employees.interface';
+import { Employees } from '../../interfaces/employees.interface';
 import { NgFor } from '@angular/common';
 
 @Component({

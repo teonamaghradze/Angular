@@ -11,9 +11,9 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { EmployeeService } from '../../../../services/employee.service';
+import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Employees } from '../../employees.interface';
+import { Employees } from '../../interfaces/employees.interface';
 
 @Component({
   selector: 'app-edit-employee',

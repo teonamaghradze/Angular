@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Employees } from '../Features/Employees-feature/employees.interface';
+import { Employees } from '../interfaces/employees.interface';
 
 @Injectable({
   providedIn: 'root',

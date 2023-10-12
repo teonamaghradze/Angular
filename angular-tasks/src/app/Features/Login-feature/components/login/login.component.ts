@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { UserDataService } from 'src/app/Shared/services/user-data.service';
 import { Router } from '@angular/router';
-import { Users } from '../../../Shared/interfaces/users.interface';
-import { FormsComponent } from '../../Forms-feature/components/forms/forms.component';
+import { Users } from '../../../../Shared/interfaces/users.interface';
+import { FormsComponent } from '../../../Forms-feature/components/forms/forms.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({

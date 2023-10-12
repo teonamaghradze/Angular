@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { loginGuard } from './app/guards/login.guard';
-import { authGuard } from './app/guards/auth.guard';
+import { loginGuard } from '../../Features/Login-feature/guards/login.guard';
+import { authGuard } from '../guards/auth.guard';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -8,9 +8,9 @@ export const ROUTES: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./app/Features/Login-feature/login/login.component').then(
-        (mod) => mod.LoginComponent
-      ),
+      import(
+        '../../Features/Login-feature/components/login/login.component'
+      ).then((mod) => mod.LoginComponent),
     canActivate: [loginGuard],
   },
 
@@ -19,7 +19,7 @@ export const ROUTES: Routes = [
 
     loadComponent: () =>
       import(
-        './app/Features/Forms-feature/components/users-list/users-list.component'
+        '../../Features/Forms-feature/components/users-list/users-list.component'
       ).then((mod) => mod.UsersListComponent),
     canActivate: [authGuard],
   },
@@ -28,7 +28,7 @@ export const ROUTES: Routes = [
     path: 'currency',
     loadComponent: () =>
       import(
-        './app/Features/Conventer-feature/currency-conventer/currency-conventer.component'
+        '../../Features/Conventer-feature/currency-conventer/currency-conventer.component'
       ).then((mod) => mod.CurrencyConventerComponent),
     canActivate: [authGuard],
   },
@@ -36,7 +36,9 @@ export const ROUTES: Routes = [
   {
     path: 'employees',
     loadChildren: () =>
-      import('./employees.routes').then((r) => r.EMPLOYEES_ROUTES),
+      import('../../Features/Employees-feature/routes/employees.routes').then(
+        (r) => r.EMPLOYEES_ROUTES
+      ),
   },
 
   {
@@ -44,7 +46,7 @@ export const ROUTES: Routes = [
 
     loadComponent: () =>
       import(
-        './app/Features/Employees-feature/components/edit-employee/edit-employee.component'
+        '../../Features/Employees-feature/components/edit-employee/edit-employee.component'
       ).then((mod) => mod.EditEmployeeComponent),
   },
 ];

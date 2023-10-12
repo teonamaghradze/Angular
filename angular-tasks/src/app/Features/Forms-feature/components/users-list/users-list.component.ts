@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { Users } from '../../../../Shared/interfaces/users.interface';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { UserDataService } from 'src/app/Shared/services/user-data.service';
 import { FormsComponent } from '../forms/forms.component';
 import { NgFor, NgIf } from '@angular/common';
 

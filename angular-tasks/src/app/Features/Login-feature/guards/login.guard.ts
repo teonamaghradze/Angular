@@ -1,6 +1,6 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
-import { UserDataService } from '../services/user-data.service';
+import { UserDataService } from '../../../Shared/services/user-data.service';
 
 export const loginGuard: CanActivateFn = (route, state) => {
   const service = inject(UserDataService);
