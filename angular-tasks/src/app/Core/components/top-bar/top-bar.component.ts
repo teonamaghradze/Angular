@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { UserDataService } from '../../../../Shared/services/user-data.service';
+
 import { RouterLink } from '@angular/router';
+import { UserDataService } from 'src/app/Shared/services/user-data.service';
 
 @Component({
   selector: 'app-top-bar',
