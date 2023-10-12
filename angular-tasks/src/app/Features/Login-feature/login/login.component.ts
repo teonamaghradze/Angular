@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Router } from '@angular/router';
-import { Users } from '../user-forms/users.interface';
-import { FormsComponent } from '../user-forms/forms/forms.component';
+import { Users } from '../../../Shared/interfaces/users.interface';
+import { FormsComponent } from '../../Forms-feature/components/forms/forms.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    standalone: true,
-    imports: [FormsModule, FormsComponent],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [FormsModule, FormsComponent],
 })
 export class LoginComponent {
   email: string = '';

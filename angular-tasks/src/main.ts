@@ -18,21 +18,7 @@ import { ROUTES } from './routes';
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(ROUTES),
-    // provideRouter([
-    //   {
-    //     path: 'login',
-    //     loadComponent: () =>
-    //       import('./app/components/login/login.component').then(
-    //         (mod) => mod.LoginComponent
-    //       ),
-    //   },
 
-    //   {
-    //     path: 'employees',
-    //     loadChildren: () =>
-    //       import('./employees.routes').then((r) => r.EMPLOYEES_ROUTES),
-    //   },
-    // ]),
     importProvidersFrom(
       BrowserModule,
       AppRoutingModule,
@@ -41,6 +27,5 @@ bootstrapApplication(AppComponent, {
     ),
     EmployeeService,
     provideHttpClient(withInterceptorsFromDi()),
-    // provideRouter([ROUTES]),
   ],
 }).catch((err) => console.error(err));

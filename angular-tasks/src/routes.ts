@@ -8,7 +8,7 @@ export const ROUTES: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./app/components/login/login.component').then(
+      import('./app/Features/Login-feature/login/login.component').then(
         (mod) => mod.LoginComponent
       ),
     canActivate: [loginGuard],
@@ -19,7 +19,7 @@ export const ROUTES: Routes = [
 
     loadComponent: () =>
       import(
-        './app/components/user-forms/users-list/users-list.component'
+        './app/Features/Forms-feature/components/users-list/users-list.component'
       ).then((mod) => mod.UsersListComponent),
     canActivate: [authGuard],
   },
@@ -28,7 +28,7 @@ export const ROUTES: Routes = [
     path: 'currency',
     loadComponent: () =>
       import(
-        './app/components/currency-conventer/currency-conventer.component'
+        './app/Features/Conventer-feature/currency-conventer/currency-conventer.component'
       ).then((mod) => mod.CurrencyConventerComponent),
     canActivate: [authGuard],
   },
@@ -43,8 +43,8 @@ export const ROUTES: Routes = [
     path: 'edit/:id',
 
     loadComponent: () =>
-      import('./app/components/edit-employee/edit-employee.component').then(
-        (mod) => mod.EditEmployeeComponent
-      ),
+      import(
+        './app/Features/Employees-feature/components/edit-employee/edit-employee.component'
+      ).then((mod) => mod.EditEmployeeComponent),
   },
 ];

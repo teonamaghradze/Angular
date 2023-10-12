@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmployeeService } from '../../services/employee.service';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { EmployeeService } from '../../../../services/employee.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Employees } from '../employees.interface';
+import { Employees } from '../../employees.interface';
 
 @Component({
-    selector: 'app-edit-employee',
-    templateUrl: './edit-employee.component.html',
-    styleUrls: ['./edit-employee.component.scss'],
-    standalone: true,
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        RouterLink,
-    ],
+  selector: 'app-edit-employee',
+  templateUrl: './edit-employee.component.html',
+  styleUrls: ['./edit-employee.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class EditEmployeeComponent implements OnInit {
   editEmployee: FormGroup;
@@ -21,7 +29,8 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private fb: FormBuilder,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) {
     this.editEmployee = this.fb.group({
       name: ['', Validators.required],
@@ -39,6 +48,7 @@ export class EditEmployeeComponent implements OnInit {
           salary: [data['salary'], Validators.required],
           age: [data['age'], Validators.required],
         });
+        this.cd.markForCheck();
       });
   }
 

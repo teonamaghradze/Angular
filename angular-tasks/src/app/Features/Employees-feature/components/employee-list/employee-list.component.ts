@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { EmployeeService } from '../../../../services/employee.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { Employees } from '../employees.interface';
+import { Employees } from '../../employees.interface';
 import { NgFor } from '@angular/common';
 
 @Component({
-    selector: 'app-employee-list',
-    templateUrl: './employee-list.component.html',
-    styleUrls: ['./employee-list.component.scss'],
-    standalone: true,
-    imports: [NgFor, RouterLink],
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor, RouterLink],
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
@@ -22,7 +28,8 @@ export class EmployeeListComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -33,6 +40,7 @@ export class EmployeeListComponent implements OnInit {
 
     this.employeeService.employeesCount.subscribe((employees: any) => {
       this.totalPages = Math.ceil(employees / this.pageSize);
+      this.cd.markForCheck();
     });
 
     this.employeeService.dataUpdated.subscribe(() => {
@@ -46,6 +54,7 @@ export class EmployeeListComponent implements OnInit {
       .subscribe(
         (data) => {
           this.employees = data;
+          this.cd.markForCheck();
         },
         (error) => {
           console.error('Error fetching employees', error);
@@ -62,6 +71,7 @@ export class EmployeeListComponent implements OnInit {
         queryParams: { page: newPage },
         queryParamsHandling: 'merge',
       });
+      this.cd.markForCheck();
     }
   }
 
@@ -72,6 +82,7 @@ export class EmployeeListComponent implements OnInit {
         this.employees = this.employees.filter(
           (employee) => employee.id !== id
         );
+        this.cd.markForCheck();
       },
       (error) => {
         console.error('Error deleting employee', error);

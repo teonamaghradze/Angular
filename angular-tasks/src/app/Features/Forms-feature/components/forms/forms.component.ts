@@ -1,21 +1,33 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
-import { Users } from '../users.interface';
+import { Users } from '../../../../Shared/interfaces/users.interface';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-forms',
-    templateUrl: './forms.component.html',
-    styleUrls: ['./forms.component.scss'],
-    standalone: true,
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-    ],
+  selector: 'app-forms',
+  templateUrl: './forms.component.html',
+  styleUrls: ['./forms.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, ReactiveFormsModule, NgIf],
 })
 export class FormsComponent implements OnChanges {
   registrationForm: FormGroup;
@@ -29,7 +41,8 @@ export class FormsComponent implements OnChanges {
   constructor(
     private fb: FormBuilder,
     private userDataService: UserDataService,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {
     console.log(this.selectedUser, 'seslds');
     this.userData = this.userDataService.getUsersData();
@@ -72,6 +85,8 @@ export class FormsComponent implements OnChanges {
 
       this.selectedUser = changes['selectedUser'].currentValue;
       if (this.selectedUser) this.editUser(this.selectedUser);
+
+      this.cd.markForCheck();
     }
   }
 
@@ -103,6 +118,7 @@ export class FormsComponent implements OnChanges {
 
       this.userDataService.setUserData(formData);
       alert('You are registered');
+      this.cd.markForCheck();
     }
   }
 
@@ -135,6 +151,7 @@ export class FormsComponent implements OnChanges {
 
         this.selectedUser = null;
         this.registrationForm.reset();
+        this.cd.markForCheck();
       }
     }
   }
@@ -143,6 +160,7 @@ export class FormsComponent implements OnChanges {
   cancelEdit() {
     this.selectedUser = null;
     this.registrationForm.reset();
+    this.cd.markForCheck();
   }
 
   checkPasswords() {
@@ -150,5 +168,6 @@ export class FormsComponent implements OnChanges {
       this.registrationForm.get('password')?.value !==
       this.registrationForm.get('confirmPassword')?.value
     );
+    this.cd.markForCheck();
   }
 }

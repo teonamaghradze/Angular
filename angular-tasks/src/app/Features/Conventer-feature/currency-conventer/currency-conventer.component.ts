@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { NgFor } from '@angular/common';
@@ -9,11 +13,12 @@ interface ExchangeRateData {
 }
 
 @Component({
-    selector: 'app-currency-conventer',
-    templateUrl: './currency-conventer.component.html',
-    styleUrls: ['./currency-conventer.component.scss'],
-    standalone: true,
-    imports: [FormsModule, NgFor],
+  selector: 'app-currency-conventer',
+  templateUrl: './currency-conventer.component.html',
+  styleUrls: ['./currency-conventer.component.scss'],
+  standalone: true,
+  imports: [FormsModule, NgFor],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrencyConventerComponent {
   baseUrl = `https://v6.exchangerate-api.com/v6/af3b6d4b4e1dfe63e5042906`;
@@ -25,11 +30,12 @@ export class CurrencyConventerComponent {
   currencies: string[] = [];
   mainCurrencies: string[] = ['USD', 'EUR', 'GBP', 'GEL', 'CAD'];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.http.get(`${this.baseUrl}/latest/USD`).subscribe(() => {
       this.currencies = this.mainCurrencies;
+      this.cd.markForCheck();
     });
 
     this.updateCurrency2();
@@ -47,6 +53,7 @@ export class CurrencyConventerComponent {
       )
       .subscribe((result: number) => {
         this.amount2 = result;
+        this.cd.markForCheck();
       });
   }
 }

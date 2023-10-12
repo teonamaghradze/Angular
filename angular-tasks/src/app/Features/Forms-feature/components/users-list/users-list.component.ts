@@ -1,19 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Users } from '../users.interface';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { Users } from '../../../../Shared/interfaces/users.interface';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { FormsComponent } from '../forms/forms.component';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-users-list',
-    templateUrl: './users-list.component.html',
-    styleUrls: ['./users-list.component.scss'],
-    standalone: true,
-    imports: [
-        NgFor,
-        NgIf,
-        FormsComponent,
-    ],
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor, NgIf, FormsComponent],
 })
 export class UsersListComponent {
   @Output() selectedUser = new EventEmitter<Users>();
@@ -27,7 +30,10 @@ export class UsersListComponent {
   // @Input() userData: Users[] = [];
   userData: Users[] = [];
 
-  constructor(private userDataService: UserDataService) {
+  constructor(
+    private userDataService: UserDataService,
+    private cd: ChangeDetectorRef
+  ) {
     this.userData = this.userDataService.getUsersData();
   }
 
@@ -37,11 +43,13 @@ export class UsersListComponent {
     console.log(this.editingUser);
 
     this.selectedUser.emit(user);
+    this.cd.markForCheck();
   }
 
   //removeuser
   removeUser(user: Users) {
     this.userToRemove = user;
+    this.cd.markForCheck();
   }
 
   getCurrentUser() {
@@ -62,6 +70,7 @@ export class UsersListComponent {
         if (index !== -1) {
           // Remove the user from the list
           this.userData.splice(index, 1);
+          this.cd.markForCheck();
         }
         this.userToRemove = null;
       }
@@ -71,5 +80,6 @@ export class UsersListComponent {
   // Function to cancel the removal action
   cancelRemoveUser() {
     this.userToRemove = null;
+    this.cd.markForCheck();
   }
 }
